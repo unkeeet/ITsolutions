@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Firm</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #f7f9fc;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a3c6e;
+        }
+
+        header nav a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #1a3c6e;
+        }
+
+        header .auth-buttons a {
+            margin-left: 15px;
+            padding: 10px 20px;
+            border: 2px solid #1a3c6e;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #1a3c6e;
+            font-weight: 500;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        header .auth-buttons a:hover {
+            background: #1a3c6e;
+            color: #ffffff;
+        }
+
+        /* Hero Section with Background Video */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        .hero .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero button {
+            padding: 15px 30px;
+            background: #6b48ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .hero button:hover {
+            transform: scale(1.05);
+            background: #5439cc;
+        }
+
+        /* Transforming Section */
+        .transforming {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 100px;
+            gap: 50px;
+            background: #ffffff;
+        }
+
+        .transforming h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 20px;
+        }
+
+        .transforming p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .transforming button {
+            padding: 12px 25px;
+            background: #1a3c6e;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .transforming button:hover {
+            background: #14315a;
+        }
+
+        .transforming img {
+            width: 400px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Trusted By */
+        .trusted {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f7f9fc;
+        }
+
+        .trusted h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 30px;
+        }
+
+        .trusted img {
+            width: 60px;
+            margin: 0 30px;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .trusted img:hover {
+            filter: grayscale(0%);
+        }
+
+        /* Services */
+        .services {
+            padding: 80px 100px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .services h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #f7f9fc;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #718096;
+        }
+
+        /* About */
+        .about {
+            display: flex;
+            align-items: center;
+            padding: 80px 100px;
+            gap: 50px;
+            background: #f7f9fc;
+        }
+
+        .about img {
+            width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .about h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .about button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-right: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .about button:nth-child(3) {
+            background: #6b48ff;
+            color: #ffffff;
+        }
+
+        .about button:nth-child(3):hover {
+            background: #5439cc;
+        }
+
+        .about button:nth-child(4) {
+            background: transparent;
+            border: 2px solid #6b48ff;
+            color: #6b48ff;
+        }
+
+        .about button:nth-child(4):hover {
+            background: #6b48ff;
+            color: #ffffff;
+        }
+
+        /* Portfolio */
+        .portfolio {
+            padding: 80px 100px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .portfolio h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 40px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background: #f7f9fc;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a3c6e;
+        }
+
+        .portfolio-card p {
+            color: #718096;
+        }
+
+        /* Careers */
+        .careers {
+            padding: 80px 100px;
+            text-align: center;
+            background: #f7f9fc;
+        }
+
+        .careers h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 20px;
+        }
+
+        .careers p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .careers button {
+            padding: 12px 25px;
+            background: #6b48ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 40px;
+            transition: background 0.3s ease;
+        }
+
+        .careers button:hover {
+            background: #5439cc;
+        }
+
+        .careers h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 30px;
+        }
+
+        .careers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .career-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .career-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .career-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 15px;
+        }
+
+        .career-card p {
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .career-card button {
+            padding: 10px 20px;
+            background: #6b48ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .career-card button:hover {
+            background: #5439cc;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 80px 100px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: #1a3c6e;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #718096;
+            margin-bottom: 30px;
+        }
+
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 15px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            color: #2d3748;
+            background: #f7f9fc;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact input:focus,
+        .contact textarea:focus {
+            outline: none;
+            border-color: #6b48ff;
+        }
+
+        .contact button {
+            padding: 15px;
+            background: #6b48ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact button:hover {
+            background: #5439cc;
+        }
+
+        .contact .info {
+            margin-top: 30px;
+            color: #718096;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a3c6e;
+            color: #ffffff;
+            padding: 40px 100px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #ffffff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #6b48ff;
+        }
+
+        footer .social {
+            margin: 20px 0;
+        }
+
+        footer input {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px 0 0 25px;
+            font-size: 1rem;
+            width: 250px;
+        }
+
+        footer button {
+            padding: 10px 20px;
+            background: #6b48ff;
+            color: #ffffff;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        footer button:hover {
+            background: #5439cc;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">IT Solutions</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#">Login</a>
+            <a href="#">Signup</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Video -->
+    <section class="hero">
+        <video autoplay muted loop>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        <div>
+            <h1>Welcome to IT FIRM for innovative tech solutions.</h1>
+            <button>Get Started</button>
+        </div>
+    </section>
+
+    <!-- Transforming Section -->
+    <section class="transforming">
+        <div>
+            <h2>Transforming Ideas into Digital Excellence</h2>
+            <p>We develop world-class IT solutions including Web & App Development, Cybersecurity, Digital Marketing, and more.</p>
+            <button>Explore Our Services</button>
+        </div>
+        <img src="https://via.placeholder.com/400" alt="Team working">
+    </section>
+
+    <!-- Trusted By -->
+    <section class="trusted">
+        <h3>Trusted By Leading Companies</h3>
+        <img src="https://via.placeholder.com/60" alt="Google">
+        <img src="https://via.placeholder.com/60" alt="Microsoft">
+        <img src="https://via.placeholder.com/60" alt="Amazon">
+        <img src="https://via.placeholder.com/60" alt="IBM">
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <h2>Empowering your digital growth with end-to-end IT solutions.</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Web/App Development</h3>
+                <p>Custom websites and mobile apps to achieve your business goals.</p>
+            </div>
+            <div class="service-card">
+                <h3>Cybersecurity</h3>
+                <p>Protect your data with cybersecurity solutions.</p>
+            </div>
+            <div class="service-card">
+                <h3>Digital Marketing</h3>
+                <p>Reach your audience through impactful digital marketing strategies.</p>
+            </div>
+            <div class="service-card">
+                <h3>Social Media Handling</h3>
+                <p>Boost your presence across all major social media platforms.</p>
+            </div>
+            <div class="service-card">
+                <h3>Brand Building</h3>
+                <p>Craft a strong, recognizable brand identity from scratch.</p>
+            </div>
+            <div class="service-card">
+                <h3>Business Consulting</h3>
+                <p>Expert advice to streamline operations and grow your business.</p>
+            </div>
+            <div class="service-card">
+                <h3>SEO Content Writing</h3>
+                <p>Optimize your content with SEO-rich articles to improve rankings.</p>
+            </div>
+            <div class="service-card">
+                <h3>Logo & Graphic Design</h3>
+                <p>Create stunning logos and graphics for your brand.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <img src="https://via.placeholder.com/500" alt="Team">
+        <div>
+            <h2>About Us</h2>
+            <p>We're a passionate team of tech enthusiasts delivering high-quality IT solutions to businesses worldwide.</p>
+            <button>Learn More</button>
+            <button>Contact Us</button>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/300" alt="Project Alpha">
+                <h3>Project Alpha</h3>
+                <p>Web development for an e-commerce platform.</p>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/300" alt="SmartApp">
+                <h3>SmartApp</h3>
+                <p>Mobile app for a healthcare startup.</p>
+            </div>
+            <div class="portfolio-card">
+                <img src="https://via.placeholder.com/300" alt="CloudX">
+                <h3>CloudX</h3>
+                <p>Cloud migration and infrastructure setup.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Careers -->
+    <section class="careers">
+        <h2>Join Our Team</h2>
+        <p>We’re always on the lookout for creative, talented techies. Find your next opportunity with us.</p>
+        <button>View Open Positions</button>
+        <h3>Open Positions</h3>
+        <div class="careers-grid">
+            <div class="career-card">
+                <h4>Frontend Developer</h4>
+                <p>Build stunning user interfaces with React and modern tools.</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="career-card">
+                <h4>Backend Developer</h4>
+                <p>Design robust APIs and manage our cloud infrastructure.</p>
+                <button>Apply Now</button>
+            </div>
+            <div class="career-card">
+                <h4>UI/UX Designer</h4>
+                <p>Craft intuitive and beautiful user experiences for our products.</p>
+                <button>Apply Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <h2>Get in Touch</h2>
+        <p>Want to discuss a project? We’d love to hear from you!</p>
+        <form>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button onclick="alert('Message Sent!')">Send Message</button>
+        </form>
+        <div class="info">
+            <p>+91 98765 43210 | contact@yourcompany.com</p>
+            <p>303, 3rd Floor, Skyline IT Park, Ahmedabad, Gujarat</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <a href="#">IT Solutions</a>
+            <a href="#">Quick Links</a>
+            <a href="#">Contact</a>
+            <a href="#">+91 12345 67890</a>
+        </div>
+        <div class="social">
+            <p>Follow Us: <a href="#">LinkedIn</a> <a href="#">Twitter</a></p>
+        </div>
+        <div>
+            <input type="email" placeholder="Enter Your Email">
+            <button>Subscribe</button>
+        </div>
+    </footer>
+
+    <script>
+        // Basic interactivity
+        document.querySelectorAll('button').forEach(button => {
+            if (!button.onclick) {
+                button.onclick = () => alert('Button clicked!');
+            }
+        });
+    </script>
+</body>
+</html>
